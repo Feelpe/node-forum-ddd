@@ -6,7 +6,8 @@
   "rules": {
     "no-useless-constructor": "off",
     "@typescript-eslint/adjacent-overload-signatures": "off",
-    "prettier/prettier": 0
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/ban-types": "off"
   },
   "env": {
     "vitest-globals/env": true

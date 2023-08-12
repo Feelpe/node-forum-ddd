@@ -3,13 +3,13 @@ import { GetQuestionBySlugUseCase } from './get-question-by-slug'
 import { makeQuestion } from 'test/factories/make-question'
 import { Slug } from '../../enterprise/entities/value-objects/slug'
 
-let inMemoryQuestionRepository: InMemoryQuestionsRepository
+let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let sut: GetQuestionBySlugUseCase
 
 describe('Get Question By Slug', () => {
   beforeEach(() => {
-    inMemoryQuestionRepository = new InMemoryQuestionsRepository()
-    sut = new GetQuestionBySlugUseCase(inMemoryQuestionRepository)
+    inMemoryQuestionsRepository = new InMemoryQuestionsRepository()
+    sut = new GetQuestionBySlugUseCase(inMemoryQuestionsRepository)
   })
 
   it('Should be able to get a question by slug', async () => {
@@ -17,13 +17,16 @@ describe('Get Question By Slug', () => {
       slug: Slug.create('example-question'),
     })
 
-    inMemoryQuestionRepository.create(newQuestion)
+    await inMemoryQuestionsRepository.create(newQuestion)
 
-    const { question } = await sut.execute({
+    const result = await sut.execute({
       slug: 'example-question',
     })
 
-    expect(question.id).toBeTruthy()
-    expect(question.title).toEqual(newQuestion.title)
+    expect(result.value).toMatchObject({
+      question: expect.objectContaining({
+        title: newQuestion.title,
+      }),
+    })
   })
 })
