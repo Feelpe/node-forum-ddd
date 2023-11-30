@@ -1,5 +1,7 @@
 # Node Forum DDD
 
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) 
+
 The Forum Backend Application is a project built with the intent to practice the core principles of clean coding, Domain-Driven Design (DDD), and testing methodologies. It utilizes TypeScript to enhance code reliability and maintainability, alongside Vitest for testing.
 
 ## Development Notes
